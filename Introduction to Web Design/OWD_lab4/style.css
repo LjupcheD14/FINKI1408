@@ -1,0 +1,209 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+header{
+    display: block;
+    width: 100%;
+    height: 80px;
+    border-bottom: 3px solid darkgrey;
+}
+#logo{
+    display: inline-block;
+    float: left;
+    margin-left: 120px;
+    padding-top: 5px;
+}
+.header-elements{
+    display: inline-block;
+    float: right;
+    margin: 20px;
+    vertical-align: center;
+    color: black;
+    text-decoration: none;
+    padding-top: 10px;
+}
+#last-element{
+    margin-right: 150px;
+}
+.header-elements:hover{
+    color: lightgrey;
+}
+.container{
+    width: 100%;
+    height: 1000px;
+    background-color: white;
+    margin: 0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.content{
+    background-color: darkblue;
+    display: flex;
+    margin: 15px;
+    width: 98%;
+    height: 525px;
+}
+.sec{
+    height: 100%;
+    float: left;
+    width: 50%;
+    padding: 10px;
+}
+.h-position{
+    position: absolute;
+    top: 35%;
+    bottom: 25%;
+    left: 15%;
+}
+.sec-p{
+    color: white;
+    text-align: left;
+    font-size: 40px;
+}
+#sec-p1{
+    font-size: 32px;
+}
+.content-2{
+    display: block;
+    background-color: rgb(67, 146, 113);
+    margin: 15px;
+    height: 400px;
+    padding: 0 50px;
+    margin-top: 20px;
+}
+.content-2-1{
+    height: 175px;
+    padding: 10px 0;
+}
+.img-elements{
+    border-radius: 20px;
+    width: 300px;
+    height: 150px;
+}
+#text-right{
+    margin: 20px 0px 20px 325px;
+}
+#text-left{
+    margin: 20px 325px 25px 0px;
+}
+footer{
+    display: block;
+    width: 100%;
+    height: 80px;
+    border-top: 3px solid darkgrey;
+}
+.text-footer{
+    display: inline-block;
+    float: left;
+    padding-top: 10px;
+    margin: 20px 20px 20px 120px;
+}
+.menu{
+    height: 80px;
+    background-color: rgb(141, 238, 141);
+    margin: 15px;
+}
+.menu-p1{
+    float: left;
+    font-size: 36px;
+    color: white;
+    margin: 20px 0px 10px 105px;
+}
+.menu-p2{
+    float: right;
+    color: white;
+    font-size: 20px;
+    margin: 34px 105px 10px 0px;
+}
+/*  */
+.cards{
+    display: flex;
+    width: 98%;
+    margin: 15px;
+    height: 800px;
+    background-color: rgb(207, 207, 207);
+}
+.cards h1{
+    height: 50px;
+    width: 85%;
+    padding: 12px;
+    border-top: 2px inset white;
+    border-bottom: 2px outset white;
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+    color: white;
+}
+.cards-wrap{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 25px;
+    background-color: rgb(207, 207, 207);
+}
+.card{
+    list-style: none;
+}
+.card li{
+    width: 36.5vh;
+    height: auto;
+    margin: 10px;
+    display: inline-block;
+    background-color: white;
+    margin-top: 0;
+    border-radius: 15px;
+}
+.card li img{
+    margin-top: 10px;
+}
+.card li p{
+    text-align: justify;
+    font-size: 18px;
+    color: black;
+    margin: 25px;
+}
+.card hr{
+    margin: 25px;
+    border: 1px solid rgb(46, 46, 46);
+}
+.card li h2{
+    text-align: center;
+    font-size: 32px;
+    color: black;
+    margin: 10px;
+    padding: 10px;
+}
+/*  */
+.contact-content{
+    display: flex;
+    width: 98%;
+    margin: 15px;
+    height: 500px;
+    background-color: rgb(207, 207, 207);
+}
+.contact-wrap{
+    margin: 20px 150px 0px 150px;
+}
+.contact-left{
+    width: 50%;
+    float: left;
+}
+.contact-left h2{
+    color: white;
+    font-size: 32px;
+}
+.contact-right{
+    width: 49%;
+    float: right;
+}
+.contact-right p{
+    float: right;
+    margin-top: 40px;
+    margin-right: 58px;
+}
