@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/cac537deb2.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Davitkov's website</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Padauk&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Indie+Flower&family=Padauk&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="wrap">
+        <header>
+            <nav>
+       
+                <div class="logo">
+                    <h3>Davitkov's website</h3>
+                </div>
+                <ul class="nav-links">
+                    <li>
+                        <a href="index.html" id="current">Home</a>
+                    </li>
+                    <li>
+                        <a href="skills.html">Skills</a>
+                    </li>
+                    <li>
+                        <a href="travel.html">Travel</a>
+                    </li>
+                    <li>
+                        <a href="hoby.html">Hobby</a>
+                    </li>
+                </ul>
+
+                <div class="burger">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+
+            </nav>
+
+            <nav>
+
+                <ul class="nav-links-mobile" style="display: none;">
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="skills.html">Skills</a>
+                    </li>
+                    <li>
+                        <a href="travel.html">Travel</a>
+                    </li>
+                    <li>
+                        <a href="hoby.html">Hobby</a>
+                    </li>
+                </ul>
+
+            </nav>
+        </header>
+
+        <br> <br> <br> <br> <br> <br>
+
+        <section>
+            <div class="home-content">
+                <img src="images/Ljupchevski.jpg" alt="">
+                <div class="text col">
+                    <h1>Ljubomir Davitkov</h1>
+                    <p>Computer science student</p>
+                </div>
+            </div>
+
+            <div class="home-content-mobile">
+                <img src="images/Ljupchevski.jpg" alt="">
+                <div class="text-mobile col-mobile">
+                    <br>
+                    <h1>Ljubomir <br> Davitkov</h1>
+                    <p>Computer science student</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="kontakirajne">
+            <h1>Contact me</h1>
+            <div class="teleonf-email">
+                <div class="krukce-footer">
+                    <i class="fas fa-phone-alt"></i>
+                    <label>Mobile</label>
+                    <span>+389 75 208 886</span>
+                </div>
+                <div class="krukcinja-footer"> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div></div>
+                <div class="krukce-footer">
+                    <i class="fas fa-envelope-open-text"></i>
+                    <label>E-mail</label>
+                    <span>ljubomirdavitkov14@gmail.com</span>
+                </div>
+                <div class="krukcinja-footer"> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div></div>
+                <div class="krukce-footer">
+                    <i class="fas fa-street-view"></i>
+                    <label>Address</label>
+                    <span>Pitu Guli 7/a, Kochani 2300</span>
+                </div>
+            </div>
+            <div class="socialnimrezi">
+                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-youtube"></i>
+                <i class="fab fa-instagram"></i>
+            </div>
+            <h4>© Ljubomir Davitkov - All rights reserved </h4>
+        </div>
+    </footer>
+
+    <script>
+        $(document).ready(function(){
+          $(".burger").click(function(){
+            $(".nav-links-mobile").toggle();
+          });
+        });
+        </script>
+    
+</body>
+</html>

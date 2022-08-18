@@ -1,0 +1,415 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    width: 100%;
+    height: auto;
+    background-image: url(images/desc.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.wrap{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+}
+nav{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 4vh;
+    background-color: rgb(53, 53, 53);
+}
+.logo{
+    color: rgb(255, 255, 255);
+    /* text-transform: uppercase; */
+    letter-spacing: 5px;
+    font-size: 30px;
+    font-family: 'Indie Flower', cursive;
+}
+.logo h3{
+    margin-top: 3vh;
+}
+.nav-links{
+    display: flex;
+    justify-content: space-around;
+    width: 30%;
+}
+.nav-links-mobile{
+    display: inline-block;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    width: 100%;
+}
+.nav-links li{
+    list-style: none;
+    margin-top: 3vh;
+}
+#current{
+    padding: 10px;
+    border: 3px solid white;
+    border-radius: 10px;
+}
+.nav-links-mobile li{
+    list-style: none;
+}
+.nav-links a{
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    letter-spacing: 2px;
+    font-weight: bold;
+    font-size: 16px;
+    font-family: 'Padauk', sans-serif;
+}
+.nav-links a:hover{
+    color: rgb(135, 135, 135);
+}
+.nav-links-mobile a{
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    letter-spacing: 1px;
+    font-weight: bold;
+    font-size: 16px;
+    font-family: 'Padauk', sans-serif;
+}
+.nav-links-mobile a:hover{
+    color: rgb(230, 230, 230);
+}
+.burger{
+    display: none;
+    cursor: pointer;
+    margin-top: 3vh;
+}
+.burger div{
+    margin-top: 3vh;
+    width: 25px;
+    height: 3px;
+    margin: 5px;
+    background-color: rgb(255, 255, 255);
+    transition: all 0.3 ease;
+}
+.home-content{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    justify-content: center;
+    /* background-color: white; */
+    background-image: url(images/desccs.jpg);
+    background-repeat: repeat;
+    background-position: initial;
+    /* background-size: cover; */
+    border-radius: 20px;
+    border-right: 20px inset rgb(53, 53, 53);    
+}
+
+.home-content img{
+    height: 100%;
+    width: 30%;
+    display: flex;
+    align-items: flex-end;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+.home-content h1{
+    color: black;
+    font-size: 36px;
+    margin-top: 40px;
+    letter-spacing: 3px;
+    font-family: 'Padauk', sans-serif;
+}
+.home-content p{
+    color: black;
+    width: 58.35vh;
+    font-size: 14;
+    font-family: 'Padauk', sans-serif;
+}
+.col{
+    display: flex;
+    flex-direction: column;
+}
+
+.text{
+    margin-left: 100px;
+}
+
+.text h1{
+    margin-bottom: 20px;
+}
+
+/* skillls */
+
+.trending-wrap{
+    width: 100%;
+    display: flex;
+    background-color: transparent;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    /* margin-top: 50px; */
+}
+.trending-ul{
+    list-style: none;
+    margin-top: 30px;
+}
+.trending-ul li{
+    width: 39vh;
+    height: 59vh;
+    display: inline-block;
+    /* background-color: rgb(83, 83, 83); */
+    background-color: rgb(53, 53, 53);
+    /* border: 5px solid rgb(83, 83, 83); */
+    margin: 2.65vh;
+    border-radius: 25px;
+}
+
+.trending-ul li img{
+    width: 39vh;
+    height: 33vh;
+    border-radius: 25px;
+    filter: blur(0px);
+    transition: .4s linear;
+}
+.trending-ul li img:hover{
+    filter: blur(0px) brightness(60%);
+}
+.trending-ul li p{
+    font-family: 'PT Sans', sans-serif;
+    text-align: justify;
+    padding: 5px;
+    font-size: 1.49vh;
+    color: white;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+.trending-wrap h1{
+    color: black;
+    letter-spacing: 2px;
+    width: 49vh;
+    font-size: 3.6vh;
+    background-color: rgb(53, 53, 53);
+    padding: 10px;
+    border-radius: 25px;
+    /* border-bottom: 10px solid white; */
+    color: white;
+    font-family: 'Padauk', sans-serif;
+}
+.trending-wrap h1 a{
+    text-decoration: none;
+    color: white;
+    font-family: 'Padauk', sans-serif;
+}
+.trending-wrap h1 a:hover{
+    color: rgb(135, 135, 135);
+}
+.trending-ul hr{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid rgb(16, 110, 31);
+}
+.trending-ul li span{
+    display: block;
+    text-align: center;
+    font-size: 2.5vh;
+    color: white;
+    margin-top: 20px;
+    padding: 10px;
+    font-family: 'PT Sans', sans-serif;
+}
+
+/* footer */
+
+.krukcinja-footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ 
+    height:80px;
+}
+
+.krukcinja-footer div{
+    width: 9px;
+    height: 9px;
+    background: #555c56;
+    border-radius: 50%;
+    margin: 7px;
+}
+
+.kontakirajne{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding-top: 40px;
+}
+.kontakirajne h1{
+    font-family: 'PT Sans', sans-serif;
+    color: white;
+    font-size: 25px;
+}
+
+.krukce-footer{
+    width: 16%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.krukce-footer i{
+    font-size: 28px;
+    color:white;
+    background:rgb(16, 97, 110);
+    padding: 25px;
+    border-radius: 50%;
+    border:4px solid rgba(3, 8, 2, 0.288);
+}
+
+.krukce-footer label{
+    font-family: 'PT Sans', sans-serif;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.krukce-footer span{
+    color: white;
+    font-family: 'PT Sans', sans-serif;
+    width: 200px;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 12px;
+}
+
+
+.socialnimrezi{
+    margin-top: 90px;
+}
+.socialnimrezi i{
+    color:#7f858f;
+    font-size: 16px;
+    padding: 5px;
+}
+
+.kontakirajne h4{
+    color:#7f858f;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 14px;
+    margin-top: 15px;
+}
+
+.teleonf-email{
+    display: flex;
+    margin-top:80px;
+    margin-left: 100px;
+}
+
+footer{
+    width: 100%;
+    margin-top: 200px;
+    /* height: 500px; */
+    background: rgb(53, 53, 53);
+}
+
+/* media */
+
+@media(max-width: 992px){
+    nav{
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        justify-items: center;
+    }
+    .logo h3{
+        font-size: 12px;
+    }
+    .burger{
+        display: block;
+    }
+    .burger-diet{
+        display: block;
+    }
+    .nav-links{
+        display: none;
+    }
+    .home-content {
+        align-items: center;
+        flex-direction: column;
+    }
+    .krukcinja-footer{
+        display: block;
+        margin: 30px;
+        margin-bottom: 100px;
+    }
+    .home-content{
+        display: none;
+    }
+    .home-content-mobile{
+        display: block !important;
+    }
+    .home-content-mobile h1{
+        font-size: 28px !important;
+    }
+    .home-content-mobile p{
+        font-size: 20px !important;
+    }
+    .teleonf-email {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-left: 0px;
+    }
+}
+
+.home-content-mobile{
+    display: none;
+    width: 100%;
+    background-color: transparent;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+.home-content-mobile img{
+    max-width: 250px;
+    width: 100%;
+}
+
+.home-content-mobile h1{
+    font-size: 28px;
+    margin-bottom: 10px;
+    text-align: center;
+    color: white;
+    width: 100%;
+    font-family: 'Roboto Slab', serif;
+}
+.home-content-mobile p{
+    font-size: 20px;
+    color: white;
+    font-family: 'Roboto Slab', serif;
+}
+.home-content-mobile img{
+    max-width: 300px;
+    width: 100%;
+}
+.home-content-mobile h1{
+    font-size: 18px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-family: 'Roboto Slab', serif;
+}
+.home-content-mobile p{
+    font-family: 'Roboto Slab', serif;
+}
+
