@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstring>
+#include <cmath>
 
 using namespace std;
 
@@ -9,92 +10,103 @@ private:
     char naziv[20];
     char lokacija[20];
     static double popust;
-    double osnovna_cena;
+    double cenaBilet;
 public:
-    Koncert(const char *naziv="", const char *lokacija="", double osnovna_cena=0)
+    Koncert(char *naziv="", char *lokacija="", double cenaBilet=0)
     {
         strcpy(this->naziv,naziv);
         strcpy(this->lokacija,lokacija);
-        this->osnovna_cena=osnovna_cena;
+        this->cenaBilet=cenaBilet;
     }
-    static void setSezonskiPopust(double broj)
+
+    static void setSezonskiPopust(double number)
     {
-        popust=broj;
+        popust=number;
     }
+
     static double getSezonskiPopust()
     {
         return popust;
     }
+
     char *getNaziv()
     {
         return naziv;
     }
+
     virtual double cena()
     {
-        return osnovna_cena*(1.0-popust);
+        return cenaBilet*(1.0-popust);
     }
+
 };
+
 double Koncert::popust=0.2;
 
 class ElektronskiKoncert : public Koncert
 {
 private:
     char *ime;
-    double vreme;
+    double vremetraenje;
     bool zabava;
 public:
-    ElektronskiKoncert(const char *naziv="", const char *lokacija="", double osnovna_cena=0, const char *ime="", double vreme=0, bool zabava=true) : Koncert(naziv,lokacija,osnovna_cena)
+    ElektronskiKoncert(char *naziv="", char *lokacija="", double cenaBilet=0, char *ime="", double vremetraenje=0, bool zabava=true) : Koncert(naziv,lokacija,cenaBilet)
     {
         this->ime = new char[strlen(ime)+1];
         strcpy(this->ime,ime);
-        this->vreme=vreme;
+        this->vremetraenje=vremetraenje;
         this->zabava=zabava;
     }
+
     double cena()
     {
-        if(vreme>5)
+        if(vremetraenje > 7)
         {
             if(zabava==true)
             {
-                return (Koncert::cena()+100);
+                return Koncert::cena()+310;
             }
             else
             {
-                return (Koncert::cena()+250);
+                return Koncert::cena()+460;
             }
         }
-        if(vreme>7)
+        else if(vremetraenje > 5)
         {
             if(zabava==true)
             {
-                return (Koncert::cena()+310);
+                return Koncert::cena()+100;
             }
             else
             {
-                return (Koncert::cena()+460);
+                return Koncert::cena()+250;
             }
-        }
-        if(zabava==true)
-        {
-            return Koncert::cena()-50;
         }
         else
         {
-            return Koncert::cena()+100;
+            if(zabava==true)
+            {
+                return Koncert::cena()-50;
+            }
+            else
+            {
+                return Koncert::cena()+100;
+            }
         }
     }
+
 };
 
 void najskapKoncert(Koncert **koncerti, int n)
 {
-    int counter=0;
+    int brojEl=0;
     Koncert *najskap = koncerti[0];
     for(int i=0; i<n; i++)
     {
-        ElektronskiKoncert *tmp = dynamic_cast<ElektronskiKoncert*>(koncerti[i]);
-        if(tmp!=0)
+        ElektronskiKoncert *e = dynamic_cast<ElektronskiKoncert*>(koncerti[i]);
+        if(e!=0)
         {
-            counter++;
+            brojEl++;
         }
         if(i!=0)
         {
@@ -105,33 +117,31 @@ void najskapKoncert(Koncert **koncerti, int n)
         }
     }
     cout<<"Najskap koncert: "<<najskap->getNaziv()<<" "<<najskap->cena()<<endl;
-    cout<<"Elektronski koncerti: "<<counter<<" od vkupno "<<n<<endl;
+    cout<<"Elektronski koncerti: "<<brojEl<<" od vkupno "<<n<<endl;
 }
 
-bool prebarajKoncert(Koncert ** koncerti, int n, char * naziv, bool elektronski)
+bool prebarajKoncert(Koncert **koncerti, int n, char *naziv, bool elektronski)
 {
     if(elektronski==true)
     {
         for(int i=0; i<n; i++)
         {
-            ElektronskiKoncert *tmp = dynamic_cast<ElektronskiKoncert*>(koncerti[i]);
-            if(tmp!=0)
+            ElektronskiKoncert *e=dynamic_cast<ElektronskiKoncert*>(koncerti[i]);
+            if(e!=0)
             {
-                if(strcmp(koncerti[i]->getNaziv(),naziv)==0)
+                if(!strcmp(koncerti[i]->getNaziv(),naziv))
                 {
                     cout<<koncerti[i]->getNaziv()<<" "<<koncerti[i]->cena()<<endl;
                     return true;
                 }
             }
-
         }
-
     }
     else
     {
         for(int i=0; i<n; i++)
         {
-            if(strcmp(koncerti[i]->getNaziv(),naziv)==0)
+            if(!strcmp(koncerti[i]->getNaziv(),naziv))
             {
                 cout<<koncerti[i]->getNaziv()<<" "<<koncerti[i]->cena()<<endl;
                 return true;
@@ -143,7 +153,6 @@ bool prebarajKoncert(Koncert ** koncerti, int n, char * naziv, bool elektronski)
 
 int main()
 {
-
     int tip,n,novaCena;
     char naziv[100], lokacija[100], imeDJ[40];
     bool dnevna;
