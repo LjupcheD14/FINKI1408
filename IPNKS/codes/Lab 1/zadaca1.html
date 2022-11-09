@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zadaca 1</title>
+</head>
+<body>
+<h1 style="color: blue">ZADACA 1</h1>
+<script>
+
+    var number = window.prompt("Vnesi broj: ");
+    var items = number.split("");
+    var isPalindrome = items.join("") === items.reverse().join("");
+
+
+    if (number.length < 3) {
+        document.write("Brojot nema 3 cifri");
+    } else if (number.length == 3) {
+        if (isPalindrome) {
+            document.write("Brojot e palindrom");
+        } else {
+            document.write("Brojot ne e palindrom");
+        }
+    } else {
+        document.write("Brojot ima poveke od 3 cifri");
+    }
+
+
+</script>
+</body>
+</html>
