@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zadaca 3</title>
+</head>
+<body>
+<h1 style="color: blue">ZADACA 3</h1>
+<script>
+
+    const value = prompt("Vnesi string");
+
+    function longest(str) {
+        var show = str.split(" ");
+        show.sort(function (a, b) {
+            return b.length - a.length;
+        })
+        return show[0];
+    }
+
+    document.write(longest(value));
+
+
+
+</script>
+</body>
+</html>
