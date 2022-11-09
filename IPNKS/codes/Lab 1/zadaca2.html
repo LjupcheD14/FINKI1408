@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zadaca 1</title>
+</head>
+<body>
+<h1 style="color: blue">ZADACA 2</h1>
+<script>
+
+    var value = window.prompt("Vnesi broj: ");
+    var tmp = value.toString().substring(0, value.toString().length - 6);
+
+
+    firstSub = value.substring(0, 2);
+    secondSub = value.substring(2, 5);
+    thirdSub = value.substring(5, 8);
+
+
+    switch (tmp) {
+        case "70":
+        case "71":
+        case "72":
+            document.write("0" + firstSub + "/" + secondSub + "-" + thirdSub + " - T-Mobile");
+            break;
+        case "75":
+        case "76":
+            document.write("0" + firstSub + "/" + secondSub + "-" + thirdSub + " - One");
+            break;
+        case "77":
+        case "78":
+            document.write("0" + firstSub + "/" + secondSub + "-" + thirdSub + " - Vip");
+            break;
+    }
+</script>
+</body>
+</html>
