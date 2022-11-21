@@ -176,19 +176,19 @@ class DLL<E> {
 
 public class ListaOdListi {
 
-    public static long findMagicNumber(DLL<DLL<Integer>> list) {
+        public static long findMagicNumber(DLL<DLL<Integer>> list) {
         //Vashiot kod tuka...
-        DLLNode<DLL<Integer>> first = list.getFirst();
+        DLLNode<DLL<Integer>> firstList = list.getFirst();
         long result = 1;
-        while (first != null) {
+        while (firstList != null) {
             long zbir = 0;
-            DLLNode<Integer> firstElement = first.element.getFirst();
-            while (firstElement != null) {
-                zbir += firstElement.element;
-                firstElement = firstElement.succ;
+            DLLNode<Integer> firstElementInList = firstList.element.getFirst();
+            while (firstElementInList != null) {
+                zbir += firstElementInList.element;
+                firstElementInList = firstElementInList.succ;
             }
             result *= zbir;
-            first = first.succ;
+            firstList = firstList.succ;
         }
         return result;
 
