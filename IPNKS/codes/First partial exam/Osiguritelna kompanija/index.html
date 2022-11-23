@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kolokvium</title>
+    <script>
+
+
+        function generiraj_smetka() {
+
+            let ime = document.getElementById("ime");
+            let prezime = document.getElementById("prezime");
+            let registracija = document.getElementById("registracija");
+            let godini_starost = document.getElementById("godini_starost");
+            let soobrakajka_da = document.getElementById("soobrakajka_da");
+            let soobrakajka_ne = document.getElementById("soobrakajka_ne");
+
+            let rezultat = document.getElementById("smetka");
+
+            let brojac = 0;
+            brojac = parseInt(brojac);
+            var soobrakajka;
+            let cena = 3000;
+            cena = parseInt(cena);
+
+
+            let str = registracija.value.toString();
+            let firstsub = registracija.value.toString().substring(0, 2);
+            let secondsub = registracija.value.toString().substring(2, 6);
+            let thirdsub = registracija.value.toString().substring(6, 8);
+
+            console.log(str);
+            console.log(firstsub);
+            console.log(" ");
+            console.log(secondsub);
+            console.log(" ");
+            console.log(secondsub[0]);
+            console.log(" ");
+            console.log(secondsub[1]);
+            console.log(" ");
+            console.log(secondsub[2]);
+            console.log(" ");
+            console.log(secondsub[3]);
+            console.log(" ");
+            console.log(thirdsub);
+
+
+            const regex = /^[A-Za-z\s]*$/;
+            const regexNum = /^\d+$/;
+
+
+            if (ime.value == "" || prezime.value == "" || registracija.value == "" || godini_starost.value == "" || soobrakajka_da.value == false || soobrakajka_ne.value == false) {
+                alert("Popolnete gi site polinja");
+                return;
+            }
+
+            if (regex.test(firstsub) && regex.test(thirdsub) && regexNum.test(secondsub)) {
+                console.log("OKEj");
+            } else {
+                alert("Pogresen format na registracija")
+                return;
+            }
+
+            if (secondsub[0] == secondsub[1] == secondsub[2] == secondsub[3]) {
+                cena += 1000;
+            }
+
+            if (godini_starost.value > 30) {
+                rezultat.style.backgroundColor = "red";
+            } else {
+                rezultat.style.backgroundColor = "lightgreen";
+            }
+
+            if (soobrakajka_da.checked == true) {
+                cena += 500;
+                soobrakajka = ("IMA");
+            } else if (soobrakajka_ne.checked == true) {
+                soobrakajka = ("NEMA");
+            }
+
+
+            brojac++;
+
+            // var lista = document.getElementById("smetki")
+            // let novaSmetka = document.createElement("div")
+            // novaSmetka.innerHTML =
+            //     "<p>" + ime.value + "</p>" +
+            //     "<p>" + prezime.value + "</p>" +
+            //     "<p>" + registracija.value + "</p>" +
+            //     "<p>" + godini_starost.value + "</p>" +
+            //     "<p>" + cena + "</p>" +
+            //     "<p>" + soobrakajka + "</p>" +
+            //     "<button onclick='plati(this)'>Plati</button><button onclick='izbrisi(this)'>Izbrisi</button>"
+            //
+            //
+            // lista.append(novaSmetka);
+
+
+            rezultat.innerHTML +=
+                "" + "<div class='karticka'>" +
+                "<p>" + ime.value + "</p>" +
+                "<p>" + prezime.value + "</p>" +
+                "<p>" + registracija.value + "</p>" +
+                "<p>" + godini_starost.value + "</p>" +
+                "<p>" + cena + "</p>" +
+                "<p>" + soobrakajka + "</p>" +
+                "<button onclick='plati(this)'>Plati</button><button onclick='izbrisi(this)'>Izbrisi</button>"
+            "<div>"
+
+            ime.value = ""
+            prezime.value = ""
+            registracija.value = ""
+            godini_starost.value = ""
+            soobrakajka_da.value = false
+            soobrakajka_ne.value = false
+
+
+        }
+
+        console.log("BROJAC:  "+brojac);
+
+        function plati(btn) {
+            btn.disabled = true;
+            brn.nextElementSibling.disabled = true;
+        }
+
+        function izbrisi(btn){
+            let parent = btn.parentNode;
+            parent.remove();
+        }
+    </script>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        .karticka {
+            display: inline-block;
+            width: 250px;
+            height: 250px;
+            border: 1px solid black;
+            text-align: center;
+        }
+
+        .karticka p {
+            padding: 2px;
+        }
+    </style>
+</head>
+<body>
+
+<div>
+    <p>Ime: </p><input type="text" id="ime">
+</div>
+<div>
+    <p>Prezime: </p><input type="text" id="prezime">
+</div>
+<div>
+    <p>Registracija: </p><input type="text" id="registracija">
+</div>
+<div>
+    <p>Godini na starost: </p><input type="text" id="godini_starost">
+</div>
+<div>
+    <p>Soobrakajka: </p>
+    <span>DA
+        <input type="radio" name="sb" id="soobrakajka_da" value="1" checked>
+    </span>
+    <span>NE
+        <input type="radio" name="sb" id="soobrakajka_ne" value="2">
+    </span>
+</div>
+
+<div>
+    <p>Vkupno smetki <span id="vkupno">0</span></p>
+</div>
+
+<div>
+    <button onclick="generiraj_smetka()">Generiraj</button>
+</div>
+
+
+<!--<div>-->
+<!--    <ul id="smetki">-->
+
+<!--    </ul>-->
+<!--</div>-->
+
+<ul class="karticka" id="smetka">
+
+</ul>
+
+</body>
+</html>
