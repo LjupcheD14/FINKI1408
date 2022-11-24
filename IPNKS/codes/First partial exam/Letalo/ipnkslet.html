@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LETAJ</title>
+    <script src="letas.js"></script>
+    <link rel="stylesheet" href="letas.css">
+</head>
+<body>
+<div>
+    <h1>Регистрирај лет</h1>
+    <div>
+        <label>Име и презиме</label>
+        <input type="text" id="ns">
+    </div>
+    <div>
+        <label>Oзнака на летало</label>
+        <input type="text" id="oznaka">
+    </div>
+    <div>
+        <label>Координати</label>
+        <input type="text" id="koordinati">
+    </div>
+    <div>
+        <label>Радиус</label>
+        <input type="text" id="radius">
+    </div>
+    <div>
+        <label>Висина на лет</label>
+        <input type="text" id="visina">
+    </div>
+    <div>
+        <label>Tип на летало</label>
+        <select id="tip">
+            <option></option>
+            <option>Eдрилица</option>
+            <option>Дрон</option>
+        </select>
+    </div>
+    <div>
+        <button onclick="najava()">Најави</button>
+    </div>
+    <h2>Регистрирани летови</h2>
+    <h3>Број на пријавени летови:<span id="prijaveni">0</span></h3>
+    <ul id="dodavaj">
+    </ul>
+</div>
+</body>
+</html>
