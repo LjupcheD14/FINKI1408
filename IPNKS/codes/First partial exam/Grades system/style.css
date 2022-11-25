@@ -1,0 +1,14 @@
+.inlineLabel {
+    display: inline;
+}
+div {
+    margin-bottom: 15px;
+}
+
+table, tr, th, td {
+    border: 1px solid black;
+}
+
+table {
+    border-collapse: collapse;
+}
