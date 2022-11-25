@@ -1,0 +1,18 @@
+.a
+{
+    padding: 10px;
+}
+label
+{
+    width: 200px;
+    display: inline-block;
+}
+.novo
+{
+    display: inline-block;
+    padding: 28px;
+    margin: 10px;
+    border: 1px solid black;
+    height: 200px;
+    text-align: center;
+}
