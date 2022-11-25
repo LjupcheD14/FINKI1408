@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OSIGURUVANJEEE</title>
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div>
+    <h1>Осигурување на возила</h1>
+    <div class="a">
+        <label>Име</label>
+        <input type="text" id="name">
+    </div>
+    <div class="a">
+        <label>Презиме</label>
+        <input type="text" id="sname">
+    </div>
+    <div class="a">
+        <label>Регистарска таблица</label>
+        <input type="text" id="reg">
+    </div>
+    <div class="a">
+        <label>Години на старост</label>
+        <input type="text" id="god">
+    </div>
+    <div class="a">
+        <label>Соообраќајна незгода</label>
+        <label style="display: inline">Да</label>
+        <input type="radio" name="same" id="da">
+        <label style="display: inline" >Не</label>
+        <input type="radio" name="same" id="ne">
+    </div>
+    <div class="a">
+        <button onclick="generiraj()">Генерирај сметка</button>
+    </div>
+    <h2>Сметки</h2>
+    <p>Вкупно сметки за плаќање: <span id="vkupno">0</span></p>
+    <div>
+        <ul id="smetki">
+        </ul>
+    </div>
+</div>
+</body>
+</html>
