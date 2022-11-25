@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Grades System</title>
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div>
+    <h1>Details</h1>
+
+    <div>
+        <label>Name</label>
+        <input type="text" id="name">
+    </div>
+    <div>
+        <label>Index</label>
+        <input type="text" id="index">
+    </div>
+    <div>
+        <label>Phone</label>
+        <input type="text" id="phone">
+    </div>
+    <div>
+        <label>Grade</label>
+        <input type="radio" name="same" id="five">
+        <label class="inlineLabel">5</label>
+        <input type="radio" name="same" id="six">
+        <label class="inlineLabel">6</label>
+        <input type="radio" name="same" id="seven">
+        <label class="inlineLabel">7</label>
+        <input type="radio" name="same" id="eight">
+        <label class="inlineLabel">8</label>
+        <input type="radio" name="same" id="nine">
+        <label class="inlineLabel">9</label>
+        <input type="radio" name="same" id="ten">
+        <label class="inlineLabel">10</label>
+    </div>
+    <div>
+        <label>Session</label>
+        <select id="month">
+            <option></option>
+            <option>January</option>
+            <option>June</option>
+            <option>September</option>
+        </select>
+    </div>
+    <div>
+        <button onclick="importStudent()">Import student</button>
+    </div>
+    <h2>Students (average grade: <span id="average">0</span>)</h2>
+    <table>
+        <thread>
+            <th>Name</th>
+            <th>Index</th>
+            <th>Phone</th>
+            <th>Grade</th>
+            <th>Session</th>
+            <th>Actions</th>
+        </thread>
+        <tbody id="here">
+
+        </tbody>
+    </table>
+
+    <section id="dvizam">
+        <h2>Revert history</h2>
+        <ul id="history">
+
+        </ul>
+    </section>
+</div>
+</body>
+</html>
