@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zadaca 4</title>
+    <script>
+        function add() {
+            let first = document.getElementById("prv")
+            let second = document.getElementById("vtor")
+            let third = document.getElementById("tret")
+            let fourth = document.getElementById("cetvrt")
+
+            let firstResult = document.getElementById("prv_vtor")
+            let secondResult = document.getElementById("tret_cetvrt")
+
+            let parsedFirstResult = parseInt(firstResult)
+            let parsedSecondResult = parseInt(secondResult)
+
+            let parsedFirst = parseInt(first.value)
+            let parsedSecond = parseInt(second.value)
+            let parsedThird = parseInt(third.value)
+            let parsedFourth = parseInt(fourth.value)
+
+            // parsedFirstResult = parsedFirst + parsedSecond
+            // parsedSecondResult = parsedThird + parsedFourth
+
+            let total1 = parsedFirst + parsedSecond
+            let total2 = parsedThird + parsedFourth
+
+            console.log(parsedFirst)
+            console.log(parsedSecond)
+            console.log(parsedThird)
+            console.log(parsedFourth)
+
+            console.log(total1)
+            console.log(total2)
+
+
+            document.getElementById("demo").innerText = parseInt(total1);
+            document.getElementById("demo1").innerText = parseInt(total2);
+
+
+        }
+    </script>
+    <style>
+        .content p{
+            display: inline;
+        }
+        #demo1{
+            margin-left: 9%;
+        }
+    </style>
+</head>
+<body>
+<label>
+    <input id="prv" type="text">
+    <input id="tret" type="text">i
+</label>
+<br>
+<br>
+<label>
+    <input id="vtor" type="text">
+    <input id="cetvrt" type="text">i
+</label>
+<br>
+<br>
+<button onclick="add()">Add</button>
+<br>
+<br>
+
+<div class="content">
+    <p id="demo"></p>
+    <p id="demo1"></p>
+</div>
+
+</body>
+</html>
