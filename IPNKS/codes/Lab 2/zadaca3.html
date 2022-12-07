@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>About Me</title>
+    <script type="text/javascript">
+
+        // function colorChange{
+        //     document.getElementsByTagName("li").style.backgroundColor = "pink"
+        //     document.body.style.backgroundColor = 'green'
+        //     document.li.style.backgroundColor = 'red'
+        // }
+
+
+        function functionFont() {
+            document.body.style.fontFamily = 'Arial'
+            document.body.style.background = 'white'
+            // document.getElementById('name').style.background = 'blue';
+        }
+
+        function addNames() {
+            let ime = document.getElementById("name")
+            let indeks = document.getElementById("index")
+            let opstina = document.getElementById("hometown")
+
+            ime.innerHTML += 'Ljubomir'
+            indeks.innerHTML += '216092'
+            opstina.innerHTML += 'Kochani'
+        }
+
+        function changeBackground(){
+            document.getElementById('li_id1').style.background = 'red';
+            document.getElementById('li_id2').style.background = 'red';
+            document.getElementById('li_id3').style.background = 'red';
+
+        }
+
+        window.addEventListener("load", function () {
+            functionFont()
+        });
+
+        window.addEventListener("load", function () {
+            addNames()
+        });
+
+        window.addEventListener("load", function () {
+            changeBackground()
+        });
+
+
+    </script>
+    <style>
+
+    </style>
+</head>
+<body>
+
+<h1>About Me</h1>
+
+<ul>
+    <li id="li_id1">Name: <span id="name"></span>
+    <li id="li_id2">Index: <span id="index"></span>
+    <li id="li_id3">Hometown: <span id="hometown"></span>
+</ul>
+</body>
+</html>
