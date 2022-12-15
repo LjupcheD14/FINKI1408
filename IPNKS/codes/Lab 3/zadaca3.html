@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ZADACA 3</title>
+    <script>
+        function Cilindar(radius, visina) {
+            this.radius = radius
+            this.visina = visina
+            this.volumen = () => Math.PI * this.radius * this.radius * this.visina
+        }
+
+        const cl = new Cilindar(5, 10)
+
+        document.write(cl.volumen().toFixed(2))
+    </script>
+</head>
+<body>
+
+</body>
+</html>
