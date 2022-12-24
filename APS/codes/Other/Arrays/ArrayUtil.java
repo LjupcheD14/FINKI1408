@@ -1,6 +1,8 @@
 package Youtube;
 
-// Adding or Updating elements in a One-Dimensional Array
+// Print elements of an Array
+
+package Youtube;
 
 public class ArrayUtil {
     public void printArray(int[] arr) {
@@ -11,13 +13,9 @@ public class ArrayUtil {
         System.out.println();
     }
 
-    public void arrayDemo() {
-        int[] myArray = new int[5];
-        printArray(myArray);
-    }
-
     public static void main(String[] args) {
         ArrayUtil arrayUtil = new ArrayUtil();
-        arrayUtil.arrayDemo();
+        arrayUtil.printArray(new int[]{1, 2, 3, 4, 5});
     }
 }
+
