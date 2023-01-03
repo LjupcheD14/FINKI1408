@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ZADACA 1</title>
+    <script>
+
+        function vnesiStudent() {
+            let ime = document.getElementById("name")
+            let prezime = document.getElementById("surname")
+            let indeks = document.getElementById("index")
+            let predmet = document.getElementById("subject")
+            let ocena = document.getElementById("gradeOption")
+
+            let tabela = document.getElementById("here")
+            let redica = document.createElement("tr")
+
+            redica.innerHTML = "<td>" + ime.value + "<td>" +
+                "<td>" + prezime.value + "<td>" +
+                "<td>" + indeks.value + "<td>" +
+                "<td>" + predmet.value + "<td>" +
+                "<td>" + ocena.value + "<td>"
+
+            tabela.append(redica)
+        }
+
+    </script>
+
+
+</head>
+<body>
+<div>
+    <h1>Details</h1>
+
+    <div>
+        <label>Име</label>
+        <input type="text" id="name">
+    </div>
+    <div>
+        <label>Презиме</label>
+        <input type="text" id="surname">
+    </div>
+    <div>
+        <label>Индекс</label>
+        <input type="text" id="index">
+    </div>
+    <div>
+        <label>Предмет</label>
+        <input type="text" id="subject">
+    </div>
+    <div>
+        <label>Оцена</label>
+        <select id="gradeOption">
+            <option>5(пет)</option>
+            <option>6(шест)</option>
+            <option>7(седум)</option>
+            <option>8(осум)</option>
+            <option>9(девет)</option>
+            <option>10(десет)</option>
+        </select>
+    </div>
+    <div>
+        <button onclick="vnesiStudent()">Внеси</button>
+    </div>
+
+    <table>
+        <thread>
+            <th>Име</th>
+            <th>Презиме</th>
+            <th>Индекс</th>
+            <th>Предмет</th>
+            <th>Оценка</th>
+        </thread>
+        <tbody id="here">
+
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>
