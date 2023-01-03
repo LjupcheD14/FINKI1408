@@ -15,17 +15,38 @@
             let tabela = document.getElementById("here")
             let redica = document.createElement("tr")
 
-            redica.innerHTML = "<td>" + ime.value + "<td>" +
-                "<td>" + prezime.value + "<td>" +
-                "<td>" + indeks.value + "<td>" +
-                "<td>" + predmet.value + "<td>" +
-                "<td>" + ocena.value + "<td>"
+            redica.innerHTML = "<td>" + ime.value + "</td>" +
+                "<td>" + prezime.value + "</td>" +
+                "<td>" + indeks.value + "</td>" +
+                "<td>" + predmet.value + "</td>" +
+                "<td>" + ocena.value + "</td>"
 
             tabela.append(redica)
         }
 
     </script>
 
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 25%;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+    </style>
 
 </head>
 <body>
@@ -64,13 +85,13 @@
     </div>
 
     <table>
-        <thread>
+        <thead>
             <th>Име</th>
             <th>Презиме</th>
             <th>Индекс</th>
             <th>Предмет</th>
             <th>Оценка</th>
-        </thread>
+        </thead>
         <tbody id="here">
 
         </tbody>
