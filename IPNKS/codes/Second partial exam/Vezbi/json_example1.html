@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON example 1</title>
+
+    <script>
+        window.onload = function() {
+            const form = document.querySelector("form");
+            form.addEventListener("submit", function(event) {
+                event.preventDefault(); // prevent page refresh
+
+                const name = document.querySelector("#name").value;
+                const age = document.querySelector("#age").value;
+
+                const data = { name, age };
+                const json = JSON.stringify(data);
+                console.log(json);
+            });
+        }
+
+    </script>
+
+</head>
+<body>
+<form>
+    <label>Name:</label>
+    <input type="text" id="name" name="name">
+    <br>
+    <label>Age:</label>
+    <input type="text" id="age" name="age">
+    <br>
+    <input type="submit" value="submit">
+</form>
+</body>
+</html>
