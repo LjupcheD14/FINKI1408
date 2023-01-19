@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Colors and Delimiter</title>
+</head>
+<body>
+<p>Colors: </p><input type="text" id="colors" value="red,green,blue">
+<p>Delimiter: </p><input type="text" id="delimiter" value=",">
+<br>
+<input type="button" value="Draw" onclick="draw()">
+<div id="ploter">
+
+</div>
+</body>
+<script>
+    function draw() {
+        let colors = document.getElementById('colors').value
+        let delimiter = document.getElementById('delimiter').value
+
+        color_array = colors.split(delimiter)
+
+        ploter = document.getElementById('ploter')
+
+        new_html = ''
+
+        color_array.forEach(function (color) {
+            new_html += "<div style='background-color:" + color + "; width: 50px; height: 50px; float: left;'onclick=remove(this)></div>"
+        })
+
+        ploter.innerHTML = new_html
+    }
+
+    function remove(elem) {
+        elem.parentNode.removeChild(elem);
+
+        let ploter = document.getElementById('ploter');
+        let new_text = '';
+        let delimiter = document.getElementById('delimiter').value;
+        let color_input = document.getElementById('colors');
+
+        for (let i = 0; i < ploter.children.length; i++) {
+            new_text += ploter.children[i].style.backgroundColor + delimiter;
+        }
+
+        color_input.value = new_text.substring(0, new_text.length - delimiter.length);
+        console.log(elem);
+    }
+
+</script>
+</html>
