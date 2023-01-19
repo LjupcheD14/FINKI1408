@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zadaca Snegulki</title>
+</head>
+<body>
+<img src="s1.png" style="left: 10%"/>
+<img src="s2.png" style="left: 20%"/>
+<img src="s3.png" style="left: 30%"/>
+<img src="s4.png" style="left: 40%"/>
+<img src="s5.png" style="left: 50%"/>
+<img src="s6.png" style="left: 60%"/>
+</body>
+<script>
+    imgs = document.getElementsByTagName("img");
+    for(i=0;i<imgs.length;i++)
+    {
+        imgs[i].style.position = 'absolute';
+        imgs[i].style.top = '-200px';
+        imgs[i].style.left = Math.random()*1200;
+        imgs[i].style.width = '150px';
+        setInterval(fall, (Math.random() + 0.5) * 5, imgs[i]);
+    }
+
+    function fall(elem)
+    {
+        var pos = Number(elem.style.top.split("px")[0]);
+        elem.style.top=pos+1+"px";
+        if(pos>1000)
+            elem.style.top="-200px";
+    }
+</script>
+</html>
