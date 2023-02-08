@@ -73,6 +73,16 @@ public class SinglyLinkedList {
         }
     }
 
+    public ListNode deleteFirst() {
+        if (head == null) {
+            return null;
+        }
+        ListNode temp = head;
+        head = head.next;
+        temp.next = null;
+        return temp;
+    }
+
     public static void main(String[] args) {
         SinglyLinkedList sll = new SinglyLinkedList();
         sll.head = new ListNode(10);
@@ -89,8 +99,13 @@ public class SinglyLinkedList {
         sll.insertFirst(89);
         sll.insertLast(90);
 
-        sll.insert(2,50);
+        sll.insert(2, 50);
 
+        sll.display();
+
+        System.out.println("\nLength is: " + sll.length());
+        
+        sll.deleteFirst();
         sll.display();
         System.out.println("\nLength is: " + sll.length());
     }
