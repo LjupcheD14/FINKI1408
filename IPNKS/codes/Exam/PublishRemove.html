@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISPIT!!!</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.10.4/themes/start/jquery-ui.css"/>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .heder {
+            display: flex;
+        }
+
+        .heder div {
+            width: 50%;
+        }
+
+        #left .la1 {
+            display: inline-block;
+            width: 120px;
+            margin-bottom: 20px;
+        }
+
+        .la {
+            display: inline-block;
+            width: 50px;
+        }
+
+        #tabela, td, th {
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        #tabela td {
+            max-width: 600px;
+        }
+
+        .last button {
+            display: block;
+            width: 70px;
+            margin-bottom: 7px;
+        }
+    </style>
+</head>
+<body>
+<div class="heder">
+    <div id="left">
+        <h2> Post details </h2>
+        <label class="la1">Title </label><input type="text" id="naslov"><br>
+        <label class="la1">Post </label><textarea id="tekst"></textarea><br>
+        <label class="la1">Content type</label>
+        <input type="radio" id="free" name="tip"><label class="la">Free</label>
+        <input type="radio" id="paid" name="tip"><label class="la">Paid</label><br>
+        <label class="la1">Category </label>
+        <select id="select">
+            <option>Science</option>
+            <option>Education</option>
+            <option>Industry</option>
+        </select> <br>
+        <button onclick="vnesi()">Import post</button>
+    </div>
+    <div id="right">
+        <h2>Removed links</h2>
+        <ul id="lista">
+
+        </ul>
+    </div>
+</div>
+<br>
+<h2>Published posts: <span id="track">0</span></h2>
+<table id="tabela">
+    <thead>
+    <th>Title</th>
+    <th>Link</th>
+    <th>Type</th>
+    <th>Category</th>
+    <th>Actions</th>
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
+<script>
+    var data = '[{"title":"FCSE announcement", "post":"FSCE is starting with classes this semestar from 15th Feb.", "type":"Free", "category":"Education", "published":true},{"title":"What is an NFT", "post":"An NFT, which stands for non-fungible token, is a unique unit of data employing technology that allows digital content to become logged and authenticated on cryptocurrency blockchains", "type":"Free", "category":"Science", "pusblished": false}]';
+    var newData = JSON.parse(data);
+    var k = 0;
+    var count = 0;
+  
+    function preBuild() {
+        var getTable = document.getElementById("tabela").getElementsByTagName("tbody")[0];
+        var getSpan = document.getElementById("track");
+        var count = 0;
+
+        for (var i = 0; i < newData.length; i++) {
+            var newRow = getTable.insertRow();
+            newRow.insertCell(0).innerHTML = newData[i].title;
+            newRow.insertCell(1).innerHTML = newData[i].post;
+            newRow.insertCell(2).innerHTML = "finki.ukim.mk/" + newData[i].title.replace(/ /g, '-');
+            newRow.insertCell(3).innerHTML = newData[i].type;
+            newRow.insertCell(4).innerHTML = newData[i].category;
+            newRow.insertCell(5).innerHTML = `<button class="publish-btn">Publish</button><button class="remove-btn">Remove</button>`;
+        }
+
+        var publishButtons = document.getElementsByClassName("publish-btn");
+        var removeButtons = document.getElementsByClassName("remove-btn");
+
+        for (var i = 0; i < publishButtons.length; i++) {
+            publishButtons[i].addEventListener("click", function(event) {
+                getSpan.innerHTML = ++count;
+                event.target.parentElement.parentElement.style.backgroundColor = "lightblue";
+                event.target.setAttribute("disabled", "true");
+                event.target.nextSibling.setAttribute("disabled", "true");
+            });
+
+            removeButtons[i].addEventListener("click", function(event) {
+                event.target.parentElement.parentElement.style.display = "none";
+                document.getElementById("lista").innerHTML += `<li>${event.target.parentElement.previousSibling.textContent}</li>`;
+            });
+        }
+    }
+
+    preBuild();
+
+    function vnesi() {
+        const getSpan = document.getElementById("track");
+        const getTitle = document.getElementById("naslov");
+        const getPost = document.getElementById("tekst");
+        const getRadio1 = document.getElementById("free");
+        const getRadio2 = document.getElementById("paid");
+        const getSelection = document.getElementById("select");
+
+        if (!getTitle.value || !getPost.value || (!getRadio1.checked && !getRadio2.checked)) {
+            alert("Please fill out all fields");
+            return;
+        }
+
+        const word = getTitle.value.replace(/ /g, '-');
+        const flag = getRadio1.checked ? false : true;
+
+        const getTable = document.getElementById("tabela").getElementsByTagName("tbody")[0];
+        const newRow = getTable.insertRow();
+
+        const createBtn1 = document.createElement("button");
+        const createBtn2 = document.createElement("button");
+        createBtn1.innerHTML = "Publish";
+        createBtn2.innerHTML = "Remove";
+
+        createBtn1.addEventListener("click", function() {
+            getSpan.innerHTML = ++count;
+            const dve = this.parentElement;
+            dve.childNodes[0].setAttribute("disabled", "true");
+            dve.childNodes[1].setAttribute("disabled", "true");
+            this.parentElement.parentElement.style.backgroundColor = "lightblue";
+        });
+        createBtn2.addEventListener("click", function() {
+            $(this).parent().parent().fadeOut(500);
+            const getLista = document.getElementById("lista");
+            const createList = document.createElement("li");
+            const dve = this.parentElement.parentElement.childNodes[2].textContent;
+            createList.innerHTML = dve;
+            getLista.appendChild(createList);
+        });
+
+        newRow.insertCell(0).innerHTML = getTitle.value;
+        newRow.insertCell(1).innerHTML = getPost.value;
+        newRow.insertCell(2).innerHTML = "finki.ukm.mk/" + word;
+        newRow.insertCell(3).innerHTML = flag ? "paid" : "free";
+        newRow.insertCell(4).innerHTML = getSelection.value;
+
+        const lastRow = newRow.insertCell(5);
+        lastRow.setAttribute("class", "last");
+        lastRow.appendChild(createBtn1);
+        lastRow.appendChild(createBtn2);
+    }
+
+
+</script>
+</body>
+</html>
+
+
+
+    // function preBuild() {
+    //     var getTable = document.getElementById("tabela").getElementsByTagName("tbody")[0];
+    //     var getSpan = document.getElementById("track");
+    //     var count = 0;
+    //
+    //     for (var i = 0; i < newData.length; i++) {
+    //         var newRow = getTable.insertRow();
+    //         newRow.insertCell(0).innerHTML = newData[i].title;
+    //         newRow.insertCell(1).innerHTML = newData[i].post;
+    //         newRow.insertCell(2).innerHTML = "finki.ukim.mk/" + newData[i].title.replace(/ /g, '-');
+    //         newRow.insertCell(3).innerHTML = newData[i].type;
+    //         newRow.insertCell(4).innerHTML = newData[i].category;
+    //         newRow.insertCell(5).innerHTML = `<button onclick="publish(this)">Publish</button><button onclick="remove(this)">Remove</button>`;
+    //     }
+    //
+    //     function publish(el) {
+    //         getSpan.innerHTML = ++count;
+    //         el.parentElement.parentElement.style.backgroundColor = "lightblue";
+    //         el.setAttribute("disabled", "true");
+    //         el.nextSibling.setAttribute("disabled", "true");
+    //     }
+    //
+    //     function remove(el) {
+    //         el.parentElement.parentElement.style.display = "none";
+    //         document.getElementById("lista").innerHTML += `<li>${el.parentElement.previousSibling.textContent}</li>`;
+    //     }
+    // }
