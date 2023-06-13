@@ -1,3 +1,5 @@
+// Presmetka na komutativna vrednost do odreden broj vo listata
+
 import java.util.Scanner;
 
 
