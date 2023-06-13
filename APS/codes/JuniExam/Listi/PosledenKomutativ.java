@@ -1,3 +1,5 @@
+// Go zemame posledniot element vo listata i go dodavame na pozicija pred negovata komutativnata vrednost
+
 import java.util.Scanner;
 
 
