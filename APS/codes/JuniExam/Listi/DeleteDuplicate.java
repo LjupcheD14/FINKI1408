@@ -1,3 +1,5 @@
+// Izbrisi gi duplikatite vo listata, odnosno broevite koi sto se ednakvi na target elementot
+
 import java.util.Scanner;
 
 
