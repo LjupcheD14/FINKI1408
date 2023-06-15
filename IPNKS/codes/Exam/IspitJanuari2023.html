@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Januari 2023</title>
+    <style>
+        .newDiv {
+            display: inline-block;
+            margin: 5px;
+        }
+
+        body {
+            width: 500px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="generated">
+
+</div>
+
+<hr>
+
+<div id="clicked">
+
+</div>
+
+<hr>
+
+<button onclick="checkDivs()">Check</button>
+
+<script>
+
+    letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I",
+        "G", "K", "L", "M", "N", "O", "P", "Q", "R", "S",
+        "T", "U", "V", "W", "X", "Y", "Z",]
+
+    plotter = document.getElementById("generated")
+    for (i = 0; i < 50; i++) {
+        length = Math.floor(Math.random() * 7) + 3
+
+        generatedString = ""
+
+        for (j = 0; j < length; j++) {
+            generatedString += letters[Math.floor(Math.random() * letters.length)]
+        }
+        newDiv = document.createElement("div")
+        newDiv.innerText = generatedString
+        newDiv.style.backgroundColor = getRandomColor()
+        newDiv.setAttribute("class", "newDiv")
+        newDiv.setAttribute("onclick", "removeDiv(this)")
+        plotter.appendChild(newDiv)
+    }
+
+    function getRandomColor() {
+        return "#" + Math.floor(Math.random() * 255).toString(16)
+            + Math.floor(Math.random() * 255).toString(16)
+            + Math.floor(Math.random() * 255).toString(16)
+    }
+
+    function removeDiv(div) {
+        clicked = document.getElementById("clicked")
+        div.setAttribute("onclick", "removeDivBack(this)")
+        clicked.appendChild(div)
+    }
+
+    function removeDivBack(div) {
+        generated = document.getElementById("generated")
+        div.setAttribute("onclick", "removeDiv(this)")
+        generated.appendChild(div)
+    }
+
+    function checkDivs() {
+        divs = document.getElementById("clicked").childNodes
+
+        counter = 0
+        for (i = 1; i < divs.length - 1; i++) {
+            firstChar = divs[i].innerText.charAt(divs[i].innerText.length - 1)
+            secondChar = divs[i + 1].innerText.charAt(0)
+            counter += divs[i].innerText.length
+            if (firstChar !== secondChar) {
+                alert("GRESKA...")
+                return
+            }
+        }
+
+        counter += divs[divs.length - 1].innerText.length
+
+        alert("Broj na osvoeni poeni: " + counter)
+
+    }
+
+</script>
+
+</body>
+</html>
