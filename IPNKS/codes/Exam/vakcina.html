@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Вакцина</title>
+
+    <script>
+        let data = '[{"ime":"Angela","prezime":"Angelova","id":"1503996780019","pol":"1","godini":"25","email":"anchian@yahoo.com","lokacija":"Bitola"},{"ime":"Dimitar","prezime":"Dimitrov","id":"1204950490019","pol":"2","godini":"71","email":"dimitar.dimitrov@gamil.com","lokacija":"Skopje"}]'
+        let newData = JSON.parse(data)
+        window.onload = function () {
+            for (let i = 0; i < newData.length; i++) {
+                let ime = newData[i].ime
+                let prezime = newData[i].prezime
+                let pol = newData[i].pol
+                let godini = newData[i].godini
+                let email = newData[i].email
+                let lokacija = newData[i].lokacija
+
+                let maloletni = document.getElementById("maloletni")
+                if (godini < 18) {
+                    maloletni.innerHTML += "<tr><td>" + ime + "</td>" +
+                        "<td>" + prezime + "</td>" +
+                        "<td>" + email + "</td>" +
+                        "<td>" + lokacija + "</td>" +
+                        "<td><button disabled='true'>Вакциниран</button></td></tr>"
+                }
+
+                let polnoletni = document.getElementById("polnoletni")
+                let poln = document.createElement("tr")
+                if (godini >= 18) {
+                    poln.innerHTML += "<td>" + ime + "</td>" +
+                        "<td>" + prezime + "</td>" +
+                        "<td>" + email + "</td>" +
+                        "<td>" + lokacija + "</td>" +
+                        "<td><button onclick='vakciniran(this)'>Вакциниран</button></td>"
+                    polnoletni.append(poln)
+                }
+
+                if (pol === "1") {
+                    poln.style.backgroundColor = "orange"
+                } else if (pol === "2") {
+                    poln.style.backgroundColor = "lightblue"
+                }
+            }
+        }
+
+        function vnesi() {
+            let name = document.getElementById("name")
+            let surname = document.getElementById("surname")
+            let embg = document.getElementById("embg")
+            let female = document.getElementById("female")
+            let male = document.getElementById("male")
+            let years = document.getElementById("years")
+            let mail = document.getElementById("email")
+            let location = document.getElementById("location")
+
+            if (name.value === "" || surname.value === "" || embg.value === "" || years.value === "" || mail.value === "" || location.value === "" || (female.checked === false && male.checked === false)) {
+                alert("Сите полиња се задолжителни!")
+                return
+            }
+
+            if (embg.value.length !== 13) {
+                alert("Внесете валиден матичен број!")
+                return
+            }
+
+            if (mail.value.length > 100){
+                alert("Мејлот не смее да содржи повеќе од 100 карактери")
+                return;
+            } else if (mail.value.indexOf("@") < 0){
+                alert("Внесете валиден мејл")
+                return;
+            }
+
+            let minors = document.getElementById("maloletni")
+            let min = document.createElement("tr")
+            if (years.value < 18) {
+                min.innerHTML += "<td>" + name.value + "</td>" +
+                    "<td>" + surname.value + "</td>" +
+                    "<td>" + mail.value + "</td>" +
+                    "<td>" + location.value + "</td>" +
+                    "<td><button onclick='vakciniran(this)'>Вакциниран</button></td>"
+                minors.append(min)
+
+                if (female.checked === true) {
+                    min.style.backgroundColor = "orange"
+                } else if (male.checked === true) {
+                    min.style.backgroundColor = "lightblue"
+                }
+            }
+
+            let seniors = document.getElementById("polnoletni")
+            let sen = document.createElement("tr")
+            if (years.value >= 18) {
+                sen.innerHTML += "<td>" + name.value + "</td>" +
+                    "<td>" + surname.value + "</td>" +
+                    "<td>" + mail.value + "</td>" + //checkMail(mail.value)
+                    "<td>" + location.value + "</td>" +
+                    "<td><button onclick='vakciniran(this)'>Вакциниран</button></td>"
+                seniors.append(sen)
+
+                if (female.checked === true) {
+                    min.style.backgroundColor = "orange"
+                } else if (male.checked === true) {
+                    min.style.backgroundColor = "lightblue"
+                }
+            }
+            name.value = ""
+            surname.value = ""
+            embg.value = ""
+            female.checked = false
+            male.checked = false
+            years.value = ""
+            mail.value = ""
+            location.value = "Скопје"
+        }
+
+        function vakciniran(button) {
+            let parent = button.parentNode.parentNode
+            parent.style.opacity = 1
+            let interval = setInterval(function () {
+                parent.style.opacity -= 0.1
+            }, 150)
+            setTimeout(function () {
+                clearInterval(interval)
+                let list = document.getElementById("list")
+                let item = document.createElement("li")
+                item.innerHTML = parent.children[0].innerHTML + " " + parent.children[1].innerHTML
+                list.append(item)
+                parent.remove()
+            }, 1500)
+        }
+        
+    </script>
+
+    <style>
+        h1, h2 {
+            text-align: center;
+        }
+
+        #container {
+            display: block;
+            width: 650px;
+            padding: 30px;
+        }
+
+        label {
+            display: inline-block;
+            width: 100px;
+        }
+
+        .div {
+            display: inline-block;
+            padding: 15px;
+        }
+
+        #vnesi {
+            display: inline-block;
+            padding: 5px;
+            font-weight: bold;
+            float: right;
+            margin-top: 50px;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 5px;
+            text-align: center;
+        }
+
+        #div1, #div2 {
+            display: inline-block;
+            width: 500px;
+            vertical-align: top;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <h1>Вакцина.мк</h1>
+    <h2>Сајт за искажување интерес за вакцина</h2>
+    <div class="div">
+        <label>Име:</label> <input type="text" id="name">
+    </div>
+    <div class="div">
+        <label>Презиме</label> <input type="text" id="surname">
+    </div>
+    <div class="div">
+        <label>Матичен број:</label> <input type="text" id="embg">
+    </div>
+    <div class="div">
+        <label>Пол:</label> <input type="radio" id="female">Женски <input type="radio" id="male">Машки
+    </div>
+    <div class="div">
+        <label>Години:</label> <input type="text" id="years">
+    </div>
+    <div class="div">
+        <label>Емаил адреса:</label> <input type="text" id="email">
+    </div>
+    <div class="div">
+        <label>Локација:</label>
+        <select id="location">
+            <option>Скопје</option>
+            <option>Куманово</option>
+            <option>Битола</option>
+            <option>Тетово</option>
+        </select>
+    </div>
+    <button onclick="vnesi()" id="vnesi">Внеси</button>
+</div>
+
+<div id="div1">
+    <h2>Пријавени малолетни граѓани</h2>
+    <table id="maloletni">
+        <th>Име</th>
+        <th>Презиме</th>
+        <th>Адреса</th>
+        <th>Локација</th>
+        <th>Статус</th>
+    </table>
+</div>
+
+<div id="div2">
+    <h2>Пријавени полнолетни граѓани</h2>
+    <table id="polnoletni">
+        <th>Име</th>
+        <th>Презиме</th>
+        <th>Адреса</th>
+        <th>Локација</th>
+        <th>Статус</th>
+    </table>
+</div>
+<br> <br>
+<h3>Вакцинирани:</h3>
+<ul id="list"></ul>
+</body>
+</html>
