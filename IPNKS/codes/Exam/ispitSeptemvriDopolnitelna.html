@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dopolnitelna</title>
+
+    <style>
+        #content{
+            width: 350px;
+            height: 350px;
+        }
+    </style>
+
+    <script>
+        function kreiraj() {
+            let content = document.getElementById("content").value;
+            let del = document.getElementById("del").value;
+            let tableHeader = document.getElementById("header");
+            let mainContent = document.getElementById("main");
+
+            // Polnenje na headerot na tabelata
+            let headerDel = content.split("\n")[0].split(del).join(" ");
+            let header = document.createElement("th");
+            header.textContent = headerDel;
+            tableHeader.appendChild(header);
+
+            let sodrzina = content.split("\n").slice(1);
+            let redovi = sodrzina.map((red) => red.split(del).join(" "));
+
+            // Polnenje na body-to na tabelata
+            redovi.forEach((red) => {
+                let redica = document.createElement("tr");
+                let data = document.createElement("td");
+                data.textContent = red;
+                redica.addEventListener("click", () => deleteThis(redica));
+                redica.appendChild(data);
+                mainContent.appendChild(redica);
+            });
+
+            console.log(sodrzina);
+            console.log(redovi);
+        }
+
+
+        function deleteThis(red) {
+            red.remove()
+        }
+    </script>
+</head>
+<body>
+
+Text:<textarea id="content"></textarea>
+<div>
+    Delimeter:<input type="text" id="del">
+</div>
+<button onclick="kreiraj()">Create</button>
+<div>
+    <table>
+        <thead id="header">
+        </thead>
+        <tbody id="main">
+
+        </tbody>
+    </table>
+</div>
+
+
+</body>
+</html>
