@@ -143,22 +143,12 @@
         }
 
         function createID(artist, title) {
-            let songID = ""
-            let i = ""
-            let j = ""
-            for (i = 0; i < artist.length; i++) {
-                if (artist[i].toUpperCase() === artist[i]) {
-                    songID += artist[i]
-                }
-            }
-            for (j = 0; j < title.length; j++) {
-                if (title[j].toUpperCase() === title[j]) {
-                    songID += title[j]
-                }
-            }
-            console.log(songID)
-            return songID
+            let firstL = artist.charAt(0)
+            let secondL = title.charAt(0)
+            let result = firstL + secondL;
+            return result
         }
+        
 
 
     </script>
