@@ -1,0 +1,151 @@
+<html>
+<head>
+    <title>Kvizce</title>
+    <meta charset="UTF-8">
+
+    <script>
+        var counter = 1
+        var truee = 0;
+        var falsee = 0;
+        var countries = '[{"Albania":"Tirana"},{"Andorra":"Andorra la Vella"},{"Armenia":"Yerevan"},{"Austria":"Vienna"},{"Azerbaijan":"Baku"},{"Belarus":"Minsk"},{"Belgium":"Brussels"},{"Bosnia and Herzegovina":"Sarajevo"},{"Bulgaria":"Sofia"},{"Croatia":"Zagreb"},{"Cyprus":"Nicosia"},{"Czechia":"Prague"},{"Denmark":"Copenhagen"},{"Estonia":"Tallinn"},{"Finland":"Helsinki"},{"France":"Paris"},{"Georgia":"Tbilisi"},{"Germany":"Berlin"},{"Greece":"Athens"},{"Hungary":"Budapest"},{"Iceland":"Reykjavik"},{"Ireland":"Dublin"},{"Italy":"Rome"},{"Kazakhstan":"Astana"},{"Latvia":"Riga"},{"Liechtenstein":"Vaduz"},{"Lithuania":"Vilnius"},{"Luxembourg":"Luxembourg"},{"Malta":"Valletta"},{"Moldova":"Chisinau"},{"Monaco":"Monaco"},{"Montenegro":"Podgorica"},{"Netherlands":"Amsterdam"},{"Macedonia":"Skopje"},{"Norway":"Oslo"},{"Poland":"Warsaw"},{"Portugal":"Lisbon"},{"Romania":"Bucharest"},{"Russia":"Moscow"},{"San Marino":"San Marino"},{"Serbia":"Belgrade"},{"Slovakia":"Bratislava"},{"Slovenia":"Ljubljana"},{"Spain":"Madrid"},{"Sweden":"Stockholm"},{"Switzerland":"Bern"},{"Turkey":"Ankara"},{"Ukraine":"Kyiv"},{"United Kingdom":"London"},{"Vatican City":"Vatican City"}]';
+        countries = JSON.parse(countries);
+        var chosencountries = []
+        var answers = []
+
+        while (chosencountries.length < 5) {
+            var x = Math.floor(Math.random() * countries.length)
+            if (!chosencountries.includes(Object.keys(countries[x]))) {
+                chosencountries.push(Object.keys(countries[x]))
+                answers.push(Object.values(countries[x]))
+            } else
+                break;
+        }
+
+        window.onload = function () {
+            var question = document.getElementById("question")
+            question.innerText = chosencountries[counter]
+        }
+
+        function check() {
+            var answer = document.getElementById("answer")
+            var city = document.createElement("p")
+            var countervl = document.getElementById("counterTag")
+            countervl.innerText = counter
+            console.log(counter)
+            // var cityContainer = document.getElementById("cityText")
+            // city.innerText = answer.value
+            if (answer.value == answers[counter]) {
+                truee++
+                counter++
+                if (counter == 6) {
+                    newGame()
+                    newQuestion()
+                    answer.value = ""
+                } else {
+                    // cityContainer.appendChild(city)
+                    newQuestion()
+                    answer.value = ""
+                }
+            } else {
+                falsee++
+                counter++
+                if (counter == 6) {
+                    newGame()
+                    // cityContainer.appendChild(city)
+                    newQuestion()
+                    answer.value = ""
+                } else {
+                    // cityContainer.appendChild(city)
+                    newQuestion()
+                    answer.value = ""
+                }
+            }
+            // cityContainer.appendChild(city)
+        }
+
+
+        function newQuestion() {
+            var questionContainer = document.getElementById('question');
+            var questionElement = document.createElement('p');
+            questionElement.innerText = ("Capital of " + chosencountries[counter]);
+            questionContainer.appendChild(questionElement);
+        }
+
+        function newGame() {
+            alert("Tocni Odgovori" + truee + " Gresni Odgovori" + falsee)
+            counter = 0;
+            truee = 0;
+            falsee = 0;
+            answers = []
+            chosencountries = []
+            while (chosencountries.length < 5) {
+                var x = Math.floor(Math.random() * countries.length)
+                if (!chosencountries.includes(Object.keys(countries[x]))) {
+                    chosencountries.push(Object.keys(countries[x]))
+                    answers.push(Object.values(countries[x]))
+                } else break
+            }
+
+        }
+
+    </script>
+
+    <style>
+        .container {
+            margin-bottom: 20px;
+        }
+
+        .container p {
+            font-size: 18px;
+        }
+
+
+        #answer {
+            width: 200px;
+            height: 30px;
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        #next {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #4285f4;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #counter {
+            margin-top: 20px;
+            font-size: 24px;
+            text-align: center;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+<div class="container">
+    <p>Capital city of:  <span id="question"></span> <span id="cityText"></span></p>
+</div>
+
+
+<div>
+
+    <input type="text" id="answer">
+
+</div>
+<div>
+    <button id="next" onclick="check()">NEXT</button>
+</div>
+<h1 id="counterTag">0</h1>
+
+</body>
+
+</html>
