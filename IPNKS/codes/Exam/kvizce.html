@@ -67,8 +67,25 @@
         function newQuestion() {
             var questionContainer = document.getElementById('question');
             var questionElement = document.createElement('p');
-            questionElement.innerText = ("Capital of " + chosencountries[counter]);
+            questionElement.innerText = "Capital of " + chosencountries[counter];
+            questionElement.style.opacity = 0; // Set initial opacity to 0
             questionContainer.appendChild(questionElement);
+
+            setTimeout(function() {
+                var opacity = 0;
+                var interval = 50; // Interval in milliseconds
+                var steps = 20; // Number of steps for fade-in effect
+                var delta = 1 / steps;
+
+                var fadeInEffect = setInterval(function() {
+                    opacity += delta;
+                    questionElement.style.opacity = opacity;
+
+                    if (opacity >= 1) {
+                        clearInterval(fadeInEffect);
+                    }
+                }, interval);
+            }, 500); // Delay before fade-in effect starts
         }
 
         function newGame() {
