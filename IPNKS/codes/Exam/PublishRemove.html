@@ -121,7 +121,7 @@
 
             removeButtons[i].addEventListener("click", function(event) {
                 event.target.parentElement.parentElement.style.display = "none";
-                document.getElementById("lista").innerHTML += `<li>${event.target.parentElement.previousSibling.textContent}</li>`;
+                 document.getElementById("lista").innerHTML += `<li>${event.target.parentElement.parentNode.childNodes[2].textContent}</li>`;
             });
         }
     }
