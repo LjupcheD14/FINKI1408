@@ -42,38 +42,6 @@ public class Cards {
 
     }
 
-//    public static void tarotCards(SLL<Card> firstPart, SLL<Card> secondPart) {
-//        SLLNode<Card> prvata = firstPart.getFirst();
-//        SLLNode<Card> vtorata = secondPart.getFirst();
-//        SLLNode<Card> pom3 = null;
-//
-//        secondPart.insertLast(prvata.element);
-//        firstPart.delete(prvata);
-//        firstPart.insertLast(vtorata.element);
-//        secondPart.delete(vtorata);
-//
-//        SLLNode<Card> treto = firstPart.getFirst();
-//        while (treto != null) {
-//            if (treto.succ != null) {
-//                pom3 = treto;
-//            }
-//            treto = treto.succ;
-//        }
-//        SLLNode<Card> cetvrto = secondPart.getFirst();
-//        SLLNode<Card> pom4 = null;
-//        int size;
-//        if (secondPart.length() % 2 == 0) {
-//            size = secondPart.length() / 2;
-//        } else {
-//            size = secondPart.length() / 2 + 1;
-//        }
-//        for (int i = 0; i < size; i++) {
-//            cetvrto = cetvrto.succ;
-//        }
-//        secondPart.insertBefore(pom3.element, cetvrto);
-//        firstPart.delete(pom3);
-//    }
-
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         SLL<Card> prvDel = new SLL<>();
