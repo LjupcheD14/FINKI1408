@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lotarija</title>
+
+    <style>
+        body {
+            width: 800px;
+            height: 800px;
+            font-family: Arial, sans-serif;
+        }
+
+        #btn {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        #btn:hover {
+            background-color: #0056b3;
+        }
+
+        #output, #output2, #total1, #total2 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        #player-container {
+            display: flex;
+        }
+
+        #player-container div {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 5px;
+            flex: 1;
+        }
+
+        #player-container h2 {
+            margin-bottom: 10px;
+        }
+
+        #player-container ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #player-container li {
+            margin-bottom: 5px;
+        }
+
+        h3#total1::before {
+            content: "👑 ";
+        }
+
+        h3#total2::before {
+            content: "👑 ";
+        }
+
+    </style>
+
+    <script>
+
+        const jsonString =
+            `{
+                                  "player1": {
+                                    "name": "Mirko",
+                                    "numbers": [11, 13]
+                                  },
+                                  "player2": {
+                                    "name": "Spirko",
+                                    "numbers": [34, 56]
+                                  }
+                                }`;
+
+        const parsedData = JSON.parse(jsonString)
+        console.log(parsedData)
+
+        function createPlayerDiv(playerData) {
+            const div = document.createElement('div')
+
+            const playerName = document.createElement('h2')
+            playerName.textContent = playerData.name
+
+            const numberList = document.createElement('ul')
+            playerData.numbers.forEach(number => {
+                const listItem = document.createElement('li')
+                listItem.textContent = number
+                numberList.appendChild(listItem)
+            })
+
+            div.appendChild(playerName)
+            div.appendChild(numberList)
+
+            return div
+        }
+
+        window.onload = function () {
+            const parsedData = JSON.parse(jsonString)
+            const container = document.getElementById('player-container')
+
+            for (const playerKey in parsedData) {
+                const playerData = parsedData[playerKey]
+                const playerDiv = createPlayerDiv(playerData)
+                container.appendChild(playerDiv)
+            }
+
+            const btn = document.getElementById('btn');
+            const output = document.getElementById('output');
+            const output2 = document.getElementById('output2')
+
+            const total1 = document.getElementById('total1')
+            const total2 = document.getElementById('total2')
+
+// ... (existing code remains the same)
+
+            btn.addEventListener('click', () => {
+                const interval = setInterval(() => {
+                    const broj1 = getRandomNumber(1, 100);
+                    const broj2 = getRandomNumber(1, 100);
+                    output.innerText = broj1;
+                    output2.innerText = broj2;
+
+                    if (broj1 % 2 === 0) {
+                        parsedData.player2.numbers.push(broj1);
+                    } else {
+                        parsedData.player1.numbers.push(broj1);
+                    }
+
+                    if (broj2 % 2 == 0) {
+                        parsedData.player2.numbers.push(broj2);
+                    } else {
+                        parsedData.player1.numbers.push(broj2);
+                    }
+
+                    const player1Div = container.children[0];
+                    player1Div.querySelector('ul').innerHTML = parsedData.player1.numbers.map(num => `<li>${num}</li>`).join('');
+
+                    const player2Div = container.children[1];
+                    player2Div.querySelector('ul').innerHTML = parsedData.player2.numbers.map(num => `<li>${num}</li>`).join('');
+
+                    const totalPlayer1 = parsedData.player1.numbers.reduce((sum, num) => sum + num, 0);
+                    total1.innerText = `Mirko Total : ${totalPlayer1}`;
+
+                    const totalPlayer2 = parsedData.player2.numbers.reduce((sum, num) => sum + num, 0);
+                    total2.innerText = `Spirko Total : ${totalPlayer2}`;
+
+                    console.log(parsedData);
+
+                    // Check the condition and display the winner
+                    if (totalPlayer1 >= 500) {
+                        clearInterval(interval); // Stop the interval when the condition is met
+                        alert("MIRKO e pobednik");
+                    } else if (totalPlayer2 >= 500) {
+                        clearInterval(interval); // Stop the interval when the condition is met
+                        alert("SPIRKO e pobednik");
+                    }
+                }, 2000); // Time interval in milliseconds (2 seconds in this example)
+            });
+        }
+
+            function getRandomNumber(min, max) {
+                let step1 = max - min + 1;
+                let step2 = Math.random() * step1;
+                let result = Math.floor(step2) + min;
+
+                return result;
+            }
+
+
+
+    </script>
+</head>
+<body>
+
+<button id="btn">Generate</button>
+
+<h3 id="output">Broj 1</h3>
+<h3 id="output2">Broj 2</h3>
+
+<div id="player-container">
+
+</div>
+
+<h3 id="total1"></h3>
+<h3 id="total2"></h3>
+
+</body>
+</html>
