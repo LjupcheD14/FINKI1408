@@ -1,3 +1,5 @@
+// Istata zadaca so dodaden interval
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -154,10 +156,10 @@
                     // Check the condition and display the winner
                     if (totalPlayer1 >= 500) {
                         clearInterval(interval); // Stop the interval when the condition is met
-                        alert("MIRKO e pobednik");
+                        alert("MIRKO e pobednik so rezultat: "+totalPlayer1);
                     } else if (totalPlayer2 >= 500) {
                         clearInterval(interval); // Stop the interval when the condition is met
-                        alert("SPIRKO e pobednik");
+                        alert("SPIRKO e pobednik so rezultat: "+totalPlayer2);
                     }
                 }, 2000); // Time interval in milliseconds (2 seconds in this example)
             });
