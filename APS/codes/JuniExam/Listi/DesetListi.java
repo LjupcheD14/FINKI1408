@@ -247,6 +247,7 @@ public class DesetListi {
 
         // Distribute elements to sublists
         for (int i = 0; i < original.length(); i++) {
+            // This line increments the count of elements that will be added to the sublist at the index i % 10
             numOfElementsArr[i % 10]++;
             counter++;
             if (counter == original.length()) {
