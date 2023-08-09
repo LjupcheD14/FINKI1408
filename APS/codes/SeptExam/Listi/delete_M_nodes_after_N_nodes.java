@@ -245,7 +245,7 @@ public class delete_M_nodes_after_N_nodes {
                 node = node.succ;
             }
 
-            // Start from next node and delete N nodes
+            // If we reached end of list, then return 
             if (node == null)
                 return;
 
