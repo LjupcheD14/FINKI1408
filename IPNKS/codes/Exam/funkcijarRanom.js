@@ -62,3 +62,17 @@ function areAllLetters(str) {
             let parent = button.parentNode.parentNode
             parent.style.opacity = 0.5
         }
+
+// Last chararacter
+function findLastCharacter(str) {
+    if (str.length === 0) {
+        return null; // Return null for empty strings
+    }
+    
+    return str.charAt(str.length - 1);
+}
+
+// Example usage
+const inputString = "Hello, World!";
+const lastChar = findLastCharacter(inputString);
+console.log("Last character:", lastChar);
