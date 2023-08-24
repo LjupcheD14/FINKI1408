@@ -16,7 +16,7 @@
 
 
 
-RANDOM NUMBER
+//RANDOM NUMBER
             function getRandomNumber(min, max) {
                 let step1 = max - min + 1;
                 let step2 = Math.random() * step1;
@@ -24,3 +24,5 @@ RANDOM NUMBER
 
                 return result;
             }
+
+        const broj1 = getRandomNumber(1, 100);
