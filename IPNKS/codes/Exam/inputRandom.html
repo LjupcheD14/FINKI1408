@@ -112,11 +112,17 @@ Igracot sto ima >150 poeni e pobednik :) -->
         window.onload = function () {
             const parsedData = JSON.parse(jsonString)
             const container = document.getElementById('player-container')
+            
+            // Iterate through each player's data in the parsedData object
+            for (const playerKey in parsedData) {
+                // Get the player's data using the playerKey
+                const playerData = parsedData[playerKey];
 
-            for(const playerKey in parsedData){
-                const playerData = parsedData[playerKey]
-                const playerDiv = createPlayerDiv(playerData)
-                container.appendChild(playerDiv)
+                // Create a div element representing the player and their information
+                const playerDiv = createPlayerDiv(playerData);
+
+                // Append the created div to the container element on the page
+                container.appendChild(playerDiv);
             }
 
             const btn = document.getElementById('btn')
