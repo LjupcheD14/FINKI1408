@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Div Generator</title>
+  <style>
+    #container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .random-div {
+      border: 1px solid #000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 18px;
+      font-weight: bold;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+<h1>Random Div Generator</h1>
+<button id="generateButton">Generate Random Div</button>
+<div id="container"></div>
+
+<script>
+  function generateRandomString(length) {
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let result = "";
+    for (let i = 0; i < length; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      result += characters.charAt(randomIndex);
+    }
+    return result;
+  }
+
+  function createRandomDiv() {
+    const div = document.createElement("div");
+
+    const randomWidth = Math.floor(Math.random() * 200 + 50);
+    const randomHeight = Math.floor(Math.random() * 200 + 50);
+    const randomColor = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
+    const randomString = generateRandomString(10);
+
+    div.style.width = `${randomWidth}px`;
+    div.style.height = `${randomHeight}px`;
+    div.style.backgroundColor = randomColor;
+    div.classList.add("random-div");
+
+    const paragraph = document.createElement("p");
+    paragraph.textContent = randomString;
+    div.appendChild(paragraph);
+
+    return div;
+  }
+
+  document.getElementById("generateButton").addEventListener("click", () => {
+    const container = document.getElementById("container");
+    const randomDiv = createRandomDiv();
+    container.appendChild(randomDiv);
+  });
+</script>
+</body>
+</html>
