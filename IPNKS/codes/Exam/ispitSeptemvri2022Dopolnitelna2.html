@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        textarea{
+            height: 120px;
+            width: 120px;
+        }
+        th, td{
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+<div id="top-div">
+    <p>Text: <textarea id="text"></textarea></p>
+    <p>Delimeter: <input type="text" id="delimeter"></p>
+    <button id="btn-create" onclick="create()">Create</button>
+</div>
+<div>
+    <table id="tablee">
+        <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Index</th>
+        </tr>
+    </table>
+</div>
+</body>
+<script>
+    function create()
+    {
+        let textArea = document.getElementById("text").value
+        let delimeter = document.getElementById("delimeter").value
+        let textRows = textArea.split("\n")
+
+        for(let i=0; i<textRows.length; i++)
+        {
+            let newEntry = "<tr>"
+            let oneRow = textRows[i].split(delimeter)
+            for(let j=0; j<oneRow.length; j++)
+            {
+                newEntry += "<td onclick='deleteRow(this)'>"+oneRow[j]+"</td>"
+            }
+            newEntry+= "</tr>"
+            document.getElementById("tablee").innerHTML += newEntry
+        }
+        textArea.innerText= ''
+        delimeter.innerText= ''
+    }
+
+    function deleteRow(cell){
+        let row = cell.parentNode
+        row.parentNode.removeChild(row)
+    }
+</script>
+</html>
