@@ -46,3 +46,13 @@ function isValidEmail(email) {
     const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return pattern.test(email);
 }
+
+// All letters
+function areAllLetters(str) {
+    for (let char of str) {
+        if (!/[a-zA-Z]/.test(char)) {
+            return false;
+        }
+    }
+    return true;
+}
