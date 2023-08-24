@@ -56,3 +56,9 @@ function areAllLetters(str) {
     }
     return true;
 }
+// Disabled button
+        function dis(button) {
+            button.disabled = true;
+            let parent = button.parentNode.parentNode
+            parent.style.opacity = 0.5
+        }
