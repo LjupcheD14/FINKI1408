@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #grid-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .cell {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+
+        #bingo {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        #btn1 {
+            text-align: center;
+            display: block;
+            margin-bottom: 50px;
+            margin-top: 50px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            /*margin: 100px;*/
+        }
+
+        #btn1:hover {
+            background-color: #0056b3;
+        }
+
+
+    </style>
+</head>
+<body>
+
+<h2 id="bingo">0</h2>
+<button id="btn1" onclick="igra()">Start</button>
+
+<div id="grid-container"></div>
+
+<script>
+    function generateRandomNumber(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    const gridContainer = document.getElementById("grid-container");
+    const gridNumbers = [];
+
+    for (let i = 0; i < 4; i++) {
+        const row = document.createElement("div");
+        row.classList.add("row");
+
+        for (let j = 0; j < 4; j++) {
+            const randomNumber = generateRandomNumber(0, 50);
+            gridNumbers.push(randomNumber); // Store the number in the array
+            const cell = document.createElement("div");
+            cell.classList.add("cell");
+            cell.textContent = randomNumber;
+
+            row.appendChild(cell);
+        }
+
+        gridContainer.appendChild(row);
+    }
+
+    function igra() {
+        const btn1 = document.getElementById("btn1");
+        const bingo = document.getElementById("bingo");
+
+        const intervalId = setInterval(() => {
+            const broj = generateRandomNumber(0, 50);
+            bingo.innerText = broj;
+
+            // Find all cell indices with the same number
+            const matchingCellIndices = gridNumbers.reduce((indices, number, index) => {
+                if (number === broj) {
+                    indices.push(index);
+                }
+                return indices;
+            }, []);
+
+            // Change the background color of all cells with the same number
+            const cells = document.getElementsByClassName("cell");
+            matchingCellIndices.forEach(cellIndex => {
+                cells[cellIndex].style.backgroundColor = "lightgreen";
+            });
+
+            // Check if all cells are green
+            const greenCellCount = Array.from(cells).filter(cell => cell.style.backgroundColor === "lightgreen").length;
+
+            if (greenCellCount === cells.length) {
+                alert("BINGO madafaka");
+                clearInterval(intervalId);
+            }
+        }, 200); // Change the interval time as needed
+    }
+
+
+
+</script>
+
+</body>
+</html>
