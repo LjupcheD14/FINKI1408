@@ -257,9 +257,6 @@ public class Septemvri {
         for (int i = 0; i < N; i++)
             lista.insertLast(scanner.nextInt());
 
-//        System.out.println("Vnesi broj M: ");
-//        int Z = scanner.nextInt();
-
         func(lista);
 
     }
