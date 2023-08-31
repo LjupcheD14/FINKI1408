@@ -242,6 +242,10 @@ public class Septemvri {
             SLLNode<Integer> prev = current;
             SLLNode<Integer> last = current.succ;
 
+            if (last == null) {
+                break;
+            }
+
             while (last.succ != null) {
                 prev = last;
                 last = last.succ;
