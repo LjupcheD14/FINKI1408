@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h3 class="text-center mb-4">Dishes</h3>
+        <div class="row">
+            {% for d in dishes %}
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <img src="{{ d.image.url }}" class="card-img-top" alt="{{ d.name }}"
+                             style="width: 100%; height: 200px; object-fit: cover;">
+{#                        {% if d.image %}#}
+{#                            <img src="{{ d.image.url }}" class="card-img-top" alt="{{ d.name }}"#}
+{#                                 style="width: 100%; height: 200px; object-fit: cover;">#}
+{#                        {% else %}#}
+{#                            <img src="{% media 'dishes/sezona2024-1.jpg' %}" class="card-img-top" alt="Default Image"#}
+{#                                 style="width: 100%; height: 200px; object-fit: cover;">#}
+{#                        {% endif %}#}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ d.name }}</h5>
+                            <ul class="list-unstyled">
+                                <li>Ingredients: {{ d.ingredients }}</li>
+                                {% if d.calories <= 200 %}
+                                    <li>Calories: Low</li>
+                                {% else %}
+                                    <li>Calories: {{ d.calories }}</li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="text-center mt-4">
+            <p>Number of dishes: {{ count }}</p>
+        </div>
+        <div class="text-center mb-3">
+            <a href="{% url 'Add dish' %}" class="btn btn-primary">Add dish</a>
+        </div>
+    </div>
+{% endblock %}

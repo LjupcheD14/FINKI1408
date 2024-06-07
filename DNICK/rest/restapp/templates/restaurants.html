@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h3 class="text-center mb-4">Restaurants</h3>
+        <div class="row">
+            {% for r in restaurants %}
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h3 class="card-title">{{ r.name }}</h3>
+                            <p class="card-text">{{ r.address }}</p>
+                            <p class="card-text">{{ r.phone }}</p>
+                            <p class="card-text">{{ r.email }}</p>
+                            <p class="card-text">
+                                {% if r.capacity > 10 %}
+                                    Capacity: {{ r.capacity }}
+                                {% else %}
+                                    <p>No capacity.</p>
+                                {% endif %}
+                            </p>
+                        </div>
+                        <div class="card-footer text-center">
+                            <a href="{% url 'edit restaurant' r.id %}" class="btn btn-secondary btn-sm">Edit</a>
+                            <a href="{% url 'restaurant details' r.id %}" class="btn btn-info btn-sm">Details</a>
+                            <a href="{% url 'delete restaurant' r.id %}" class="btn btn-danger btn-sm">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="text-center mb-3">
+            <a href="{% url 'Add restaurant' %}" class="btn btn-primary">Add restaurant</a>
+        </div>
+    </div>
+{% endblock %}
