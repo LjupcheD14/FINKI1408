@@ -1,0 +1,13 @@
+@prefix finki: <http://finki.ukim.mk/resource#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+
+finki:VBS a finki:Course ;
+    vcard:fn "VBS Course" ;
+    vcard:description "This is the VBS course description." .
+
+finki:Student1 a vcard:Person ;
+    vcard:fn "Ljubomir Davitkov" ;
+    vcard:email "ljubo.davitkov@gmail.com" ;
+    vcard:tel "+123456789" ;
+    vcard:adr "Bozidar Adzija number 12" ;
+    finki:isASubjectOf finki:VBS .

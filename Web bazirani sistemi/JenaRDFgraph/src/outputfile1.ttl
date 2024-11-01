@@ -1,0 +1,7 @@
+<http://finki.ukim.mk/resource#VBS> <http://www.w3.org/2006/vcard/ns#fn> "VBS Course" .
+<http://finki.ukim.mk/resource#VBS> <http://www.w3.org/2006/vcard/ns#description> "This is the VBS course description." .
+<http://finki.ukim.mk/resource#Student1> <http://www.w3.org/2006/vcard/ns#fn> "Ljubomir Davitkov" .
+<http://finki.ukim.mk/resource#Student1> <http://www.w3.org/2006/vcard/ns#email> "ljubo.davitkov@gmail.com" .
+<http://finki.ukim.mk/resource#Student1> <http://www.w3.org/2006/vcard/ns#tel> "+123456789" .
+<http://finki.ukim.mk/resource#Student1> <http://www.w3.org/2006/vcard/ns#adr> "Bozidar Adzija 12" .
+<http://finki.ukim.mk/resource#Student1> <http://finki.ukim.mk/resource#isASubjectOf> <http://finki.ukim.mk/resource#VBS> .
